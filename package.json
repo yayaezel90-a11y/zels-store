@@ -1,0 +1,22 @@
+{
+  "name": "alfarez-ai",
+  "version": "1.0.0",
+  "description": "Alfarez AI - full-stack online AI assistant web app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test test/*.test.js",
+    "check": "node --check server.js && node --check public/app.js && npm test && node scripts/smoke-test.js",
+    "smoke": "node scripts/smoke-test.js",
+    "deploy": "npm run deploy:render",
+    "deploy:render": "node scripts/deploy-render.js"
+  },
+  "keywords": [
+    "ai",
+    "chat",
+    "fullstack"
+  ],
+  "author": "Alfarez AI",
+  "license": "MIT"
+}
