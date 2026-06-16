@@ -5,6 +5,7 @@ const path = require('path');
 loadEnvFile();
 
 const PORT = process.env.PORT || 3000;
+<<<<<<< codex/create-full-stack-ai-web-app-alfarez-ai-0rfmfr
 const DEFAULT_MODEL_NAME = process.env.GEMINI_MODEL || 'gemini-3.5-flash';
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const modelCatalog = {
@@ -14,6 +15,17 @@ const modelCatalog = {
   'code-pro': { provider: DEFAULT_MODEL_NAME, label: 'Code Pro', minPlan: 'pro' },
   'reasoning-pro': { provider: DEFAULT_MODEL_NAME, label: 'Reasoning Pro', minPlan: 'pro' },
   promax: { provider: DEFAULT_MODEL_NAME, label: 'Pro Max', minPlan: 'promax' }
+=======
+const DEFAULT_MODEL_NAME = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
+const PUBLIC_DIR = path.join(__dirname, 'public');
+const modelCatalog = {
+  'flash-lite': { provider: 'gemini-1.5-flash', label: 'Flash Lite', minPlan: 'free' },
+  balanced: { provider: DEFAULT_MODEL_NAME, label: 'Balanced', minPlan: 'free' },
+  'creative-pro': { provider: 'gemini-1.5-flash', label: 'Creative Pro', minPlan: 'pro' },
+  'code-pro': { provider: 'gemini-1.5-pro', label: 'Code Pro', minPlan: 'pro' },
+  'reasoning-pro': { provider: 'gemini-1.5-pro', label: 'Reasoning Pro', minPlan: 'pro' },
+  promax: { provider: 'gemini-1.5-pro', label: 'Pro Max', minPlan: 'promax' }
+>>>>>>> main
 };
 const planRank = { free: 0, pro: 1, promax: 2 };
 const personaPrompts = {
