@@ -57,3 +57,14 @@ test('POST /api/goalpilot creates an actionable execution board without an API k
     app.close();
   }
 });
+
+test('Vercel health function returns the same model catalog', async () => {
+  const health = require('../api/health');
+  const response = await new Promise((resolve) => {
+    health({}, { status: (statusCode) => ({ json: (body) => resolve({ statusCode, body }) }) });
+  });
+  assert.equal(response.statusCode, 200);
+  assert.equal(response.body.app, 'Alfarez AI');
+  assert.equal(response.body.platform, 'vercel');
+  assert.ok(response.body.models.includes('balanced'));
+});
