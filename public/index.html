@@ -3,121 +3,107 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alfarez AI - Assistant Pro & Pro Max</title>
-  <meta name="description" content="Alfarez AI adalah web AI full-stack online dengan pilihan model, paket Pro, Pro Max, tools produktivitas, animasi, dan chat cerdas.">
+  <title>Alfarez AI</title>
+  <meta name="description" content="Alfarez AI adalah workspace chat AI modern dengan riwayat chat, sidebar, login lokal, pengaturan, model picker, dan GoalPilot.">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <div class="noise"></div>
-  <div class="orb orb-one"></div><div class="orb orb-two"></div><div class="orb orb-three"></div>
-
-  <header class="nav">
-    <a class="brand" href="#top"><span class="brand-mark">✦</span> Alfarez AI</a>
-    <nav>
-      <a href="#fitur">Fitur</a><a href="#goalpilot">GoalPilot</a><a href="#chat">Chat</a><a href="#pricing">Harga</a><a href="#tools">Tools</a><a href="#deploy">Deploy</a>
-    </nav>
-    <a class="btn nav-cta" href="#pricing">Upgrade</a>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">AI Online • Multi Model • Pro & Pro Max</p>
-        <h1>Alfarez AI yang lebih cerdas, lebih cepat, dan siap jadi pusat kerja digital kamu.</h1>
-        <p class="lead">Pilih model, persona, paket langganan, mode coding, creative writing, riset, ringkasan, sampai ide bisnis. API key tetap aman di server, UI modern penuh animasi, dan siap deploy.</p>
-        <div class="actions"><a class="btn primary" href="#chat">Mulai Chat</a><a class="btn ghost" href="#pricing">Lihat Paket</a></div>
-        <div class="badges"><span>⚡ Smart routing</span><span>🧠 Prompt enhancer</span><span>🎙️ Voice input</span><span>🔐 Server-side key</span></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <div class="brand-mark">A</div>
+        <div><strong>Alfarez AI</strong><span>Super Workspace</span></div>
       </div>
-      <div class="hero-card reveal delay-1">
-        <div class="card-top"><span></span><span></span><span></span></div>
-        <div class="assistant-logo"><span>AI</span></div>
-        <h2>Alfarez Neural Core</h2>
-        <p>Workspace AI dengan model Free, Pro, dan Pro Max.</p>
-        <div class="model-stack"><span>Flash Lite</span><span>Pro Reasoning</span><span>Max Vision</span></div>
-        <div class="metric"><strong id="healthStatus">Memeriksa server...</strong><small>Status koneksi</small></div>
+      <button class="new-chat" id="newChatBtn">＋ Chat baru</button>
+      <div class="side-section">
+        <p>Riwayat chat</p>
+        <div class="history-list" id="historyList"></div>
       </div>
-    </section>
-
-    <section id="fitur" class="features reveal">
-      <article><b>💬 Chat Kontekstual</b><p>Riwayat percakapan dikirim aman ke backend agar jawaban lebih nyambung.</p></article>
-      <article><b>🎛️ Model Picker</b><p>Pilih model cepat, seimbang, coding, kreatif, reasoning, atau Pro Max.</p></article>
-      <article><b>🧩 Persona AI</b><p>Atur gaya jawaban: general, coder, marketer, guru, researcher, atau business coach.</p></article>
-      <article><b>✨ Animasi Premium</b><p>Glassmorphism, glowing orb, reveal animation, typing indicator, dan micro-interaction.</p></article>
-    </section>
-
-    <section id="pricing" class="pricing reveal">
-      <div class="section-head"><p class="eyebrow">Paket Berbayar</p><h2>Pilih kekuatan Alfarez AI</h2><p>Simulasi paket siap dihubungkan ke payment gateway saat produksi.</p></div>
-      <div class="plans">
-        <article class="plan active" data-plan="free"><span class="tag">Free</span><h3>Starter</h3><div class="price">Rp 0<span>/bulan</span></div><ul><li>Model Flash Lite</li><li>30 chat demo per hari</li><li>Quick prompts</li><li>Riwayat lokal</li></ul><button class="btn choose-plan">Pakai Free</button></article>
-        <article class="plan featured" data-plan="pro"><span class="tag hot">Pro</span><h3>Creator Pro</h3><div class="price">Rp 49K<span>/bulan</span></div><ul><li>Model Pro Reasoning</li><li>Mode coding & dokumen</li><li>Prompt enhancer</li><li>Prioritas respons</li></ul><button class="btn primary choose-plan">Upgrade Pro</button></article>
-        <article class="plan" data-plan="promax"><span class="tag max">Pro Max</span><h3>Business Max</h3><div class="price">Rp 149K<span>/bulan</span></div><ul><li>Model Pro Max terbaik</li><li>Jawaban panjang & strategis</li><li>Mode riset mendalam</li><li>Workspace bisnis premium</li></ul><button class="btn choose-plan">Upgrade Pro Max</button></article>
+      <div class="side-section">
+        <p>Tools</p>
+        <button class="side-link" data-tool="summarize">📄 Ringkas dokumen</button>
+        <button class="side-link" data-tool="code">💻 Bantu coding</button>
+        <button class="side-link" data-tool="business">📈 Strategi bisnis</button>
+        <button class="side-link" id="openGoalPilot">🎯 GoalPilot</button>
       </div>
-    </section>
+      <div class="upgrade-card">
+        <span>Pro Max</span>
+        <strong>Jawaban lebih panjang & strategis</strong>
+        <button id="upgradeBtn">Upgrade</button>
+      </div>
+      <div class="side-footer">
+        <button class="side-link" id="settingsBtn">⚙️ Pengaturan</button>
+        <button class="profile-btn" id="loginBtn"><span id="profileInitial">?</span><b id="profileName">Masuk</b></button>
+      </div>
+    </aside>
 
-    <section id="goalpilot" class="goalpilot reveal">
-      <div class="section-head"><p class="eyebrow">Fitur Eksklusif</p><h2>GoalPilot: dari ide jadi rencana kerja otomatis</h2><p>Masukkan tujuan apa pun, Alfarez AI membuat action board, skor kesiapan, risiko, metrik sukses, dan prompt lanjutan. Fitur ini berjalan lancar bahkan saat API key belum aktif.</p></div>
-      <div class="pilot-grid">
-        <form id="goalForm" class="goal-form">
-          <label>Tujuan kamu<textarea id="goalInput" rows="4" placeholder="Contoh: deploy web Alfarez AI dan dapat 100 user pertama" required></textarea></label>
-          <label>Target waktu<select id="horizonSelect"><option>3 hari</option><option selected>7 hari</option><option>14 hari</option><option>30 hari</option></select></label>
-          <button class="btn primary" type="submit">Buat Action Board</button>
-        </form>
-        <div id="goalResult" class="goal-result">
-          <div class="empty-state">🎯 Action board kamu akan muncul di sini.</div>
+    <main class="main-panel">
+      <header class="topbar">
+        <button class="icon-btn mobile-only" id="menuBtn">☰</button>
+        <div class="top-title"><strong id="chatTitle">Chat baru</strong><span id="healthStatus">Memeriksa koneksi...</span></div>
+        <div class="top-controls">
+          <button class="pill-toggle active" id="autoScrollBtn" type="button">Auto-scroll ON</button>
+          <button class="icon-btn" id="fullscreenBtn" type="button" title="Fullscreen">⛶</button>
+          <select id="modelSelect" aria-label="Pilih model"></select>
+          <select id="personaSelect" aria-label="Pilih persona">
+            <option value="general">General</option>
+            <option value="coder">Coder</option>
+            <option value="marketer">Marketer</option>
+            <option value="teacher">Teacher</option>
+            <option value="researcher">Researcher</option>
+            <option value="business">Business</option>
+          </select>
         </div>
-      </div>
-    </section>
+      </header>
 
-    <section id="chat" class="chat-shell reveal">
-      <div class="chat-header">
-        <div><p class="eyebrow">Live Workspace</p><h2>Ngobrol dengan Alfarez AI</h2></div>
-        <div class="chat-actions"><button id="exportBtn" class="btn mini">Export</button><button id="clearBtn" class="btn mini">Hapus</button></div>
-      </div>
+      <section class="chat-layout">
+        <div class="messages" id="messages" aria-live="polite"></div>
+        <div class="prompt-shelf" id="promptShelf">
+          <button>Buat roadmap belajar AI 30 hari</button>
+          <button>Review ide bisnis saya</button>
+          <button>Buat kode landing page modern</button>
+          <button>Susun prompt konten viral</button>
+        </div>
+        <form class="composer" id="chatForm">
+          <button class="icon-btn" id="micBtn" type="button" title="Voice input">🎙️</button>
+          <textarea id="messageInput" rows="1" placeholder="Tanya apa saja ke Alfarez AI..." required></textarea>
+          <button class="icon-btn" id="enhanceBtn" type="button" title="Perjelas prompt">✨</button>
+          <button class="send-btn" type="submit">Kirim</button>
+        </form>
+      </section>
+    </main>
+  </div>
 
-      <div class="control-grid">
-        <label>Model<select id="modelSelect"></select></label>
-        <label>Persona<select id="personaSelect"><option value="general">General Assistant</option><option value="coder">Senior Coder</option><option value="marketer">Digital Marketer</option><option value="teacher">Guru Sabar</option><option value="researcher">Research Analyst</option><option value="business">Business Coach</option></select></label>
-        <label>Kreativitas<input id="temperatureRange" type="range" min="0" max="100" value="65"><span id="temperatureLabel">65%</span></label>
-        <label>Paket Aktif<input id="activePlan" value="Free" readonly></label>
-      </div>
+  <dialog id="loginModal" class="modal">
+    <button class="close" data-close="loginModal">×</button>
+    <h2>Masuk ke Alfarez AI</h2>
+    <p>Login lokal untuk menyimpan nama profil dan pengalaman seperti aplikasi AI modern.</p>
+    <label>Nama<input id="loginName" placeholder="Contoh: Alfarez"></label>
+    <label>Email<input id="loginEmail" type="email" placeholder="nama@email.com"></label>
+    <button class="primary" id="saveLoginBtn">Simpan profil</button>
+  </dialog>
 
-      <div class="quick-prompts" id="quickPrompts">
-        <button data-mode="coding">Buat aplikasi todo full-stack</button>
-        <button data-mode="business">Rancang bisnis AI agency</button>
-        <button data-mode="study">Jelaskan machine learning simpel</button>
-        <button data-mode="content">Buat kalender konten 30 hari</button>
-        <button data-mode="research">Ringkas topik jadi poin riset</button>
-      </div>
+  <dialog id="settingsModal" class="modal">
+    <button class="close" data-close="settingsModal">×</button>
+    <h2>Pengaturan</h2>
+    <label>Paket aktif<input id="activePlan" value="Free" readonly></label>
+    <label>Kreativitas <span id="temperatureLabel">65%</span><input id="temperatureRange" type="range" min="0" max="100" value="65"></label>
+    <label>Tema<select id="themeSelect"><option value="dark">Dark</option><option value="midnight">Midnight</option><option value="light">Light</option></select></label>
+    <button class="danger" id="clearAllBtn">Hapus semua riwayat</button>
+  </dialog>
 
-      <div id="messages" class="messages" aria-live="polite"></div>
-      <form id="chatForm" class="composer">
-        <button id="micBtn" class="icon-btn" type="button" title="Voice input">🎙️</button>
-        <textarea id="messageInput" rows="2" placeholder="Tulis perintah, ide, kode, atau pertanyaan untuk Alfarez AI..." required></textarea>
-        <button id="enhanceBtn" class="icon-btn" type="button" title="Perjelas prompt">✨</button>
-        <button class="send" type="submit">Kirim ➜</button>
-      </form>
-    </section>
+  <dialog id="goalModal" class="modal wide">
+    <button class="close" data-close="goalModal">×</button>
+    <h2>GoalPilot</h2>
+    <p>Ubah tujuan jadi action board otomatis.</p>
+    <form id="goalForm" class="goal-form">
+      <textarea id="goalInput" rows="3" placeholder="Contoh: deploy web AI dan dapat 100 user pertama" required></textarea>
+      <select id="horizonSelect"><option>3 hari</option><option selected>7 hari</option><option>14 hari</option><option>30 hari</option></select>
+      <button class="primary" type="submit">Buat board</button>
+    </form>
+    <div id="goalResult" class="goal-result">🎯 Board akan muncul di sini.</div>
+  </dialog>
 
-    <section id="tools" class="tools reveal">
-      <div class="section-head"><p class="eyebrow">AI Tools</p><h2>Fitur tambahan seperti AI modern</h2></div>
-      <div class="tool-grid">
-        <button data-tool="summarize">📄 Summarizer</button><button data-tool="code">💻 Code Helper</button><button data-tool="email">📧 Email Writer</button><button data-tool="seo">📈 SEO Ideas</button><button data-tool="translate">🌍 Translator</button><button data-tool="brainstorm">💡 Brainstorm</button>
-      </div>
-    </section>
-
-    <section id="deploy" class="deploy reveal">
-      <h2>Deploy Cepat</h2>
-      <div class="steps">
-        <p><strong>1.</strong> Jalankan <code>npm install</code>.</p>
-        <p><strong>2.</strong> Copy <code>.env.example</code> ke <code>.env</code>, isi <code>GEMINI_API_KEY</code>.</p>
-        <p><strong>3.</strong> Start lokal dengan <code>npm start</code>.</p>
-        <p><strong>4.</strong> Deploy ke Render/Railway/VPS dengan start command <code>npm start</code>.</p>
-      </div>
-    </section>
-  </main>
-
-  <dialog id="checkoutModal" class="modal"><button id="closeModal" class="close">×</button><h2 id="modalTitle">Upgrade Alfarez AI</h2><p id="modalText">Fitur checkout ini siap disambungkan ke payment gateway seperti Midtrans, Xendit, atau Stripe.</p><button class="btn primary" id="simulatePayBtn">Simulasikan Pembayaran Berhasil</button></dialog>
-  <footer>© 2026 Alfarez AI. Full-stack AI assistant dengan paket Pro & Pro Max.</footer>
   <script src="/app.js"></script>
 </body>
 </html>
