@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alfarez AI</title>
+  <meta name="description" content="Alfarez AI adalah workspace chat AI modern dengan riwayat chat, sidebar, login lokal, pengaturan, model picker, dan GoalPilot.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <div class="brand-mark">A</div>
+        <div><strong>Alfarez AI</strong><span>Super Workspace</span></div>
+      </div>
+      <button class="new-chat" id="newChatBtn">＋ Chat baru</button>
+      <div class="side-section">
+        <p>Riwayat chat</p>
+        <div class="history-list" id="historyList"></div>
+      </div>
+      <div class="side-section">
+        <p>Tools</p>
+        <button class="side-link" data-tool="summarize">📄 Ringkas dokumen</button>
+        <button class="side-link" data-tool="code">💻 Bantu coding</button>
+        <button class="side-link" data-tool="business">📈 Strategi bisnis</button>
+        <button class="side-link" id="openGoalPilot">🎯 GoalPilot</button>
+      </div>
+      <div class="upgrade-card">
+        <span>Pro Max</span>
+        <strong>Jawaban lebih panjang & strategis</strong>
+        <button id="upgradeBtn">Upgrade</button>
+      </div>
+      <div class="side-footer">
+        <button class="side-link" id="settingsBtn">⚙️ Pengaturan</button>
+        <button class="profile-btn" id="loginBtn"><span id="profileInitial">?</span><b id="profileName">Masuk</b></button>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <button class="icon-btn mobile-only" id="menuBtn">☰</button>
+        <div class="top-title"><strong id="chatTitle">Chat baru</strong><span id="healthStatus">Memeriksa koneksi...</span></div>
+        <div class="top-controls">
+          <button class="pill-toggle active" id="autoScrollBtn" type="button">Auto-scroll ON</button>
+          <button class="icon-btn" id="fullscreenBtn" type="button" title="Fullscreen">⛶</button>
+          <select id="modelSelect" aria-label="Pilih model"></select>
+          <select id="personaSelect" aria-label="Pilih persona">
+            <option value="general">General</option>
+            <option value="coder">Coder</option>
+            <option value="marketer">Marketer</option>
+            <option value="teacher">Teacher</option>
+            <option value="researcher">Researcher</option>
+            <option value="business">Business</option>
+          </select>
+        </div>
+      </header>
+
+      <section class="chat-layout">
+        <div class="messages" id="messages" aria-live="polite"></div>
+        <div class="prompt-shelf" id="promptShelf">
+          <button>Buat roadmap belajar AI 30 hari</button>
+          <button>Review ide bisnis saya</button>
+          <button>Buat kode landing page modern</button>
+          <button>Susun prompt konten viral</button>
+        </div>
+        <form class="composer" id="chatForm">
+          <button class="icon-btn" id="micBtn" type="button" title="Voice input">🎙️</button>
+          <textarea id="messageInput" rows="1" placeholder="Tanya apa saja ke Alfarez AI..." required></textarea>
+          <button class="icon-btn" id="enhanceBtn" type="button" title="Perjelas prompt">✨</button>
+          <button class="send-btn" type="submit">Kirim</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="loginModal" class="modal">
+    <button class="close" data-close="loginModal">×</button>
+    <h2>Masuk ke Alfarez AI</h2>
+    <p>Login lokal untuk menyimpan nama profil dan pengalaman seperti aplikasi AI modern.</p>
+    <label>Nama<input id="loginName" placeholder="Contoh: Alfarez"></label>
+    <label>Email<input id="loginEmail" type="email" placeholder="nama@email.com"></label>
+    <button class="primary" id="saveLoginBtn">Simpan profil</button>
+  </dialog>
+
+  <dialog id="settingsModal" class="modal">
+    <button class="close" data-close="settingsModal">×</button>
+    <h2>Pengaturan</h2>
+    <label>Paket aktif<input id="activePlan" value="Free" readonly></label>
+    <label>Kreativitas <span id="temperatureLabel">65%</span><input id="temperatureRange" type="range" min="0" max="100" value="65"></label>
+    <label>Tema<select id="themeSelect"><option value="dark">Dark</option><option value="midnight">Midnight</option><option value="light">Light</option></select></label>
+    <button class="danger" id="clearAllBtn">Hapus semua riwayat</button>
+  </dialog>
+
+  <dialog id="goalModal" class="modal wide">
+    <button class="close" data-close="goalModal">×</button>
+    <h2>GoalPilot</h2>
+    <p>Ubah tujuan jadi action board otomatis.</p>
+    <form id="goalForm" class="goal-form">
+      <textarea id="goalInput" rows="3" placeholder="Contoh: deploy web AI dan dapat 100 user pertama" required></textarea>
+      <select id="horizonSelect"><option>3 hari</option><option selected>7 hari</option><option>14 hari</option><option>30 hari</option></select>
+      <button class="primary" type="submit">Buat board</button>
+    </form>
+    <div id="goalResult" class="goal-result">🎯 Board akan muncul di sini.</div>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>
