@@ -14,6 +14,7 @@ const modelCatalog = {
   'code-pro': { provider: DEFAULT_MODEL_NAME, label: 'Code Pro', minPlan: 'pro' },
   'reasoning-pro': { provider: DEFAULT_MODEL_NAME, label: 'Reasoning Pro', minPlan: 'pro' },
   promax: { provider: DEFAULT_MODEL_NAME, label: 'Pro Max', minPlan: 'promax' }
+
 };
 const planRank = { free: 0, pro: 1, promax: 2 };
 const personaPrompts = {
